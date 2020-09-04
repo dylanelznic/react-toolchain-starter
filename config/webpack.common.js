@@ -39,8 +39,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] },
+        use: [
+          { loader: "babel-loader", options: { presets: ["@babel/env"] } },
+          "eslint-loader",
+        ],
       },
       // Transpile CSS imports
       {
