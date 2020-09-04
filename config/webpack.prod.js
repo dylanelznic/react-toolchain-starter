@@ -1,12 +1,12 @@
-const paths = require("./paths");
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
+const paths = require('./paths');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   /**
    * Mode (development or production)
    */
-  mode: "production",
+  mode: 'production',
 
   /**
    * How source maps are generated
@@ -19,8 +19,8 @@ module.exports = merge(common, {
    */
   output: {
     path: paths.dist,
-    publicPath: "/",
-    filename: "[name].[contenthash].bundle.js",
+    publicPath: '/',
+    filename: '[name].[contenthash].bundle.js',
   },
 
   /**
@@ -32,7 +32,7 @@ module.exports = merge(common, {
    * Optimize for production
    */
   optimization: {
-    runtimeChunk: "single",
+    runtimeChunk: 'single',
   },
 
   /**

@@ -1,18 +1,18 @@
-const webpack = require("webpack");
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
-const paths = require("./paths.js");
+const webpack = require('webpack');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
+const paths = require('./paths.js');
 
 module.exports = merge(common, {
   /**
    * Mode (development or production)
    */
-  mode: "development",
+  mode: 'development',
 
   /**
    * How source maps are generated
    */
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
 
   /**
    * Configuration for the dev server

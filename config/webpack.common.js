@@ -1,12 +1,12 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const paths = require("./paths");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./paths');
 
 module.exports = {
   /**
    * Which module webpack should use to begin building out its
    * internal dependency graph
    */
-  entry: [paths.src + "/index.js"],
+  entry: [paths.src + '/index.jsx'],
 
   /**
    * Where to emit the bundles webpack creates and how to name
@@ -14,8 +14,8 @@ module.exports = {
    */
   output: {
     path: paths.dist,
-    filename: "[name].bundle.js",
-    publicPath: "/",
+    filename: '[name].bundle.js',
+    publicPath: '/',
   },
 
   /**
@@ -26,9 +26,16 @@ module.exports = {
      * Generates an HTML file from a template
      */
     new HtmlWebpackPlugin({
-      template: paths.public + "/index.html",
+      template: paths.public + '/index.html',
     }),
   ],
+
+  /**
+   * Configure how modules are resolved
+   */
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 
   /**
    * Rules for how modules within the project are handled
@@ -38,16 +45,13 @@ module.exports = {
       // Transpile JS and JSX using Babel
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        use: [
-          { loader: "babel-loader", options: { presets: ["@babel/env"] } },
-          "eslint-loader",
-        ],
+        exclude: /(node_modules)/,
+        use: ['babel-loader', 'eslint-loader'],
       },
       // Transpile CSS imports
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
